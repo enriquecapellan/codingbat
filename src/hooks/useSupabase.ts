@@ -1,9 +1,10 @@
 import { Session, createClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
-
+// TODO: this hook should be refactored to be generic and be able to load data from any server
+// TODO: the name of this hook should be changed to something more generic
 const supabase = createClient<Database>(
 	"https://lniixxtkrycdqlzaqhur.supabase.co",
-	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxuaWl4eHRrcnljZHFsemFxaHVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQ1MzUyMzMsImV4cCI6MjAwMDExMTIzM30.p3LP2a9waCAYNZsFh_l_XQ1lVMY0WnOmmAI9d5KO_L8"
+	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxuaWl4eHRrcnljZHFsemFxaHVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQ1MzUyMzMsImV4cCI6MjAwMDExMTIzM30.p3LP2a9waCAYNZsFh_l_XQ1lVMY0WnOmmAI9d5KO_L8",
 );
 
 export const useSupabase = () => {
@@ -21,6 +22,6 @@ export const useSupabase = () => {
 
 		return () => data.subscription.unsubscribe();
 	}, []);
-	
+
 	return { session, supabase };
 };
